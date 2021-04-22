@@ -1,15 +1,26 @@
 package br.com.alura.mudi.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pedidos")
 public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nomeProduto;
     private String urlProduto;
     private String urlImagem;
     private BigDecimal valorNegociado;
     private LocalDate dataEntrega;
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -57,5 +68,13 @@ public class Pedido {
 
     public String getUrlImagem() {
         return urlImagem;
+    }
+
+    public StatusPedido getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedido statusPedido) {
+        this.status = statusPedido;
     }
 }
