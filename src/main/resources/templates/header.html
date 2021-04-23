@@ -1,6 +1,10 @@
 <div th:fragment="header" class="bg-dark text-light mb-3 p-3 d-flex justify-content-between align-items-center">
     <span class="text-info display-4">Mudi</span>
-    <span>Login</span>
+    <span>
+        <a class="text-light" sec:authorize="!isAuthenticated()" href="/login">Login</a>
+        <a onclick="document.querySelector('#form-logout').submit()" class="text-light" sec:authorize="isAuthenticated()" href="#">Logout</a>
+        <form id="form-logout" th:action="@{/logout}" method="POST"></form>
+    </span>
 </div>
 
 <h1 th:fragment="titulo(valor)" th:text="${valor}" class="h2"></h1>
