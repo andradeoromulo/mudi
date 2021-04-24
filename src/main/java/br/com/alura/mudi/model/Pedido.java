@@ -29,9 +29,6 @@ public class Pedido {
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
-    private List<Oferta> ofertas;
-
     public Long getId() {
         return id;
     }
@@ -100,7 +97,4 @@ public class Pedido {
         this.usuario = usuario;
     }
 
-    public void addOferta(Oferta oferta) {
-        this.ofertas.add(oferta);
-    }
 }

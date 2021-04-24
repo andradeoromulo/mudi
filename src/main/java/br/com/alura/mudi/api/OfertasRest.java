@@ -3,6 +3,7 @@ package br.com.alura.mudi.api;
 import br.com.alura.mudi.dto.NovaOfertaDTO;
 import br.com.alura.mudi.model.Oferta;
 import br.com.alura.mudi.model.Pedido;
+import br.com.alura.mudi.repository.OfertaRepository;
 import br.com.alura.mudi.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,9 @@ public class OfertasRest {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private OfertaRepository ofertaRepository;
+
     @PostMapping
     public Oferta fazOferta(@Valid @RequestBody NovaOfertaDTO novaOferta) {
 
@@ -31,8 +35,7 @@ public class OfertasRest {
         Pedido pedido = optional.get();
         oferta.setPedido(pedido);
 
-        pedido.addOferta(oferta);
-        pedidoRepository.save(pedido); // Automaticamente a oferta também será salva
+        ofertaRepository.save(oferta);
 
         return oferta;
     }
