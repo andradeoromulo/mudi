@@ -16,7 +16,7 @@
         <h1 th:replace="~{header :: titulo('Novo pedido')}"></h1>
 
         <div class="card">
-            <form th:object="${novoPedidoDTO}" action="/pedidos/salvar" method="POST" class="card-body my-2">
+            <form th:object="${novoPedidoDTO}" th:action="@{/pedidos/salvar}" method="POST" class="card-body my-2">
                 <div class="form-group">
                     <label for="nomeProduto">Produto</label>
                     <input th:field="*{nomeProduto}" th:errorclass="is-invalid" id="nomeProduto" placeholder="Nome do Produto" class="form-control"/>

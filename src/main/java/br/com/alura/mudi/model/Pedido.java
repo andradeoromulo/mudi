@@ -22,6 +22,9 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuario usuario;
+
     public String getNomeProduto() {
         return nomeProduto;
     }
@@ -76,5 +79,13 @@ public class Pedido {
 
     public void setStatus(StatusPedido statusPedido) {
         this.status = statusPedido;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
