@@ -8,11 +8,12 @@
         </span>
     </div>
 
-    <div class="row" sec:authorize="isAuthenticated()">
+    <div sec:authorize="isAuthenticated()">
         <div class="col">
             <nav class="nav">
                 <a class="nav-link" th:href="@{/}">Home</a>
                 <a class="nav-link" th:href="@{/pedidos}">Meus Pedidos</a>
+                <a class="nav-link" th:href="@{/ofertas}">Faça uma Oferta</a>
             </nav>
         </div>
     </div>
